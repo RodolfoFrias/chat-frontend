@@ -49,7 +49,13 @@
         <v-icon>mdi-minus</v-icon>
       </v-btn>
       <v-toolbar-title v-text="title" />
-      <v-spacer />
+
+      <chat-room :roomType="createType" />
+
+      <v-spacer/>
+
+      <chat-room :roomType="joinType" />
+
       <v-btn
         icon
         @click.stop="rightDrawer = !rightDrawer"
@@ -83,16 +89,20 @@
       :absolute="!fixed"
       app
     >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <span>&copy; Rodolfo Frias {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
 </template>
 
 <script>
+import ChatRoom from '../components/ChatRoom.vue'
 export default {
+  components: { ChatRoom },
   name: 'DefaultLayout',
   data () {
     return {
+      joinType: 'Join',
+      createType: 'Create',
       clipped: false,
       drawer: false,
       fixed: false,
@@ -102,17 +112,13 @@ export default {
           title: 'Welcome',
           to: '/'
         },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'Chat'
     }
   }
 }
 </script>
+
