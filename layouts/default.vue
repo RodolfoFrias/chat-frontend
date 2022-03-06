@@ -7,6 +7,10 @@
       fixed
       app
     >
+      <v-col>
+        <h3>Conversations</h3>
+      </v-col>
+
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -50,11 +54,7 @@
       </v-btn>
       <v-toolbar-title v-text="title" />
 
-      <chat-room :roomType="createType" />
-
       <v-spacer/>
-
-      <chat-room :roomType="joinType" />
 
       <v-btn
         icon
@@ -83,6 +83,15 @@
           </v-list-item-action>
           <v-list-item-title>Switch drawer (click me)</v-list-item-title>
         </v-list-item>
+
+        <v-list-item>
+          <chat-room :roomType="joinType" />
+        </v-list-item>
+
+        <v-list-item>
+          <chat-room :roomType="createType" />
+        </v-list-item>
+
       </v-list>
     </v-navigation-drawer>
     <v-footer
@@ -108,8 +117,8 @@ export default {
       fixed: false,
       items: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
+          icon: 'mdi-message-text',
+          title: 'Rodo',
           to: '/'
         },
       ],
