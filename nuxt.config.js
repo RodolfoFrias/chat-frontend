@@ -43,8 +43,21 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/auth-next'
+    '@nuxtjs/auth-next',
+    'nuxt-socket-io'
   ],
+
+  io: {
+    sockets: [
+      {
+        name: 'chat',
+        url: 'http://127.0.0.1:3001',
+        default: true,
+        vuex: {},
+        namespace: {}
+      }
+    ]
+  },
 
   axios: {
     baseURL: 'http://127.0.0.1:3001/'

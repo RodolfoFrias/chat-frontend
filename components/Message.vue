@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style lang="css">
-  .bubble {
+  .bubble { 
     background-color: white;
   }
 </style>

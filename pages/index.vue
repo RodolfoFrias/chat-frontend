@@ -12,6 +12,18 @@ import TextBox from '../components/TextBox.vue'
 import Message from '../components/Message.vue'
 export default {
   components: { TextBox, Message },
-  name: 'chat'
+  name: 'chat',
+
+  mounted() {
+    this.socket = this.$nuxtSocket({
+      name: 'chat'
+    })
+
+    this.socket.on('message', (msg, cb) => {
+      console.log('Message', msg)
+    })
+    console.log('Socket', this.socket)
+  }
+
 }
 </script>
