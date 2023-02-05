@@ -36,6 +36,7 @@ export default {
         if (this.$refs.form.validate()) {
           const textToSend = this.text
           this.resetForm()
+          this.$emit('message-sent', textToSend)
           await this.socket.emitP('message', textToSend)
         }
     },
