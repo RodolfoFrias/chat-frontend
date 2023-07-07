@@ -1,6 +1,6 @@
 <template>
-  <v-row justify="center" align="center" style="height: 90vh">
-    <v-col cols="12" lg="12" sm="8" md="6" style="height: 100%">
+  <v-row justify="center">
+    <v-col style="margin-top: 5%; margin-left: 1%" cols="12" lg="12" sm="8" md="6">
       <Message :messageToShow="messageToShow" />
     </v-col>
     <TextBox @message-sent='showMessage' />
@@ -12,6 +12,7 @@ import TextBox from '../components/TextBox.vue'
 import Message from '../components/Message.vue'
 export default {
   components: { TextBox, Message },
+  layout: 'chat',
   name: 'chat',
   data: () => {
     return {

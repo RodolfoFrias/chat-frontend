@@ -61,10 +61,12 @@
     methods: {
       async login () {
         try {
-          await this.$axios.post('login', {
+          const user = await this.$axios.post('login', {
             username: this.username,
             password: this.password
           })
+
+          console.info('User-->',user)
 
           await this.$auth.loginWith('local', {
             data: {

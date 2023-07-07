@@ -1,5 +1,5 @@
 <template>
-  <v-row >
+  <v-row>
     <!-- <v-col cols="12" >
       <div class="pa-4 primary rounded-pill" style="float: right">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore repellendus eum excepturi enderit eos, alias delectus tenetur? Repellat necessitatibus dignissimos fugiat debitis ad quidem.</p>
