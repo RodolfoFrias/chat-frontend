@@ -7,5 +7,16 @@ export const getters = {
 
   loggedInUser(state) {
     return state.auth.user
+  },
+
+  nuxtWebSocket(state) {
+    return state.socket
+  }
+
+}
+
+export const mutations = {
+  initSocket(state, socket) {
+    state.socket = socket
   }
 }

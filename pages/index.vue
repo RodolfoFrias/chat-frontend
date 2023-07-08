@@ -1,9 +1,9 @@
 <template>
-  <v-row justify="center">
+  <v-row justify="center" >
     <v-col style="margin-top: 5%; margin-left: 1%" cols="12" lg="12" sm="8" md="6">
-      <Message :messageToShow="messageToShow" />
+      <Message v-for="message in allMessages" :key="message" :messageToShow="message" />
     </v-col>
-    <TextBox @message-sent='showMessage' />
+    <TextBox/>
   </v-row>
 </template>
 
@@ -16,24 +16,21 @@ export default {
   name: 'chat',
   data: () => {
     return {
-      messageToShow: ''
+      message: '',
+      allMessages: []
     }
   },
-  methods: {
-    showMessage(messageToShow) {
-      this.messageToShow = messageToShow
-      console.log('Message-->', messageToShow)
-    }
-  },
-  mounted() {
+  beforeCreate() {
     this.socket = this.$nuxtSocket({
       name: 'chat'
     })
-
-    this.socket.on('message', (msg, cb) => {
-      console.log('Message', msg)
+    this.$store.commit('initSocket', this.socket)
+  },
+  async mounted() {
+    this.socket.on('message', (msg) => {
+      this.allMessages.push(msg)
     })
-    console.log('Socket', this.socket)
+    await this.socket.emitP('joinMainRoom', { room: 'main' })
   }
 
 }

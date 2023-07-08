@@ -26,9 +26,8 @@ export default {
   },
 
   mounted() {
-    this.socket = this.$nuxtSocket({
-      name: 'chat'
-    })
+    this.socket = this.$store.getters['nuxtWebSocket']
+    console.log('Child socket', this.socket)
   },
 
   methods: {
@@ -36,8 +35,8 @@ export default {
         if (this.$refs.form.validate()) {
           const textToSend = this.text
           this.resetForm()
-          this.$emit('message-sent', textToSend)
-          await this.socket.emitP('message', textToSend)
+          //this.$emit('message-sent', textToSend)
+          await this.socket.emitP('chatMessage', textToSend)
         }
     },
     resetForm() {
