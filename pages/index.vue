@@ -27,8 +27,8 @@ export default {
     this.$store.commit('initSocket', this.socket)
   },
   async mounted() {
-    this.socket.on('message', (msg) => {
-      this.allMessages.push(msg)
+    this.socket.on('message', (message) => {
+      this.allMessages.push(message)
     })
     await this.socket.emitP('joinMainRoom', { room: 'main' })
   }

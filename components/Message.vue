@@ -10,14 +10,11 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elissitatibus dignissimos fugiat debitis ad quidem.</p>
       </div>
     </v-col> -->
-    <v-col v-if="messageToShow" cols="12" >
+    <v-col cols="12" >
       <div class="pa-4 grey darken-1 rounded-pill" style="float: left">
         <p>{{ messageToShow }}</p>
       </div>
     </v-col>
-    <div v-else>
-      You don't have any conversation with this person yet :c
-    </div>
   </v-row>
 </template>
 
