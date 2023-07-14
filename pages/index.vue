@@ -20,17 +20,30 @@ export default {
       allMessages: []
     }
   },
+
   beforeCreate() {
     this.socket = this.$nuxtSocket({
       name: 'chat'
     })
     this.$store.commit('initSocket', this.socket)
   },
+
   async mounted() {
-    this.socket.on('message', (message) => {
-      this.allMessages.push(message)
+    this.socket.on('newMessage', async () => {
+      await this.getAllMessages()
     })
     await this.socket.emitP('joinMainRoom', { room: 'main' })
+  },
+
+  methods: {
+    async getAllMessages() {
+      const allMessages = await this.$axios.get('get-messages', {
+        params: {
+          room: 'main'
+        }
+      })
+      this.allMessages = allMessages.data.messages
+    }
   }
 
 }
