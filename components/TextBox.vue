@@ -35,7 +35,6 @@ export default {
         if (this.$refs.form.validate()) {
           const textToSend = this.text
           this.resetForm()
-          //this.$emit('message-sent', textToSend)
           await this.socket.emitP('chatMessage', textToSend)
         }
     },
@@ -49,7 +48,6 @@ export default {
 
 <style lang="css">
   .text-box {
-    position: absolute;
     bottom: 0;
     border: 1px solid white;
     border-radius: 20px;
